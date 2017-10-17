@@ -6,7 +6,7 @@ class Ball {
   float speed = 2.5;
   float startMillis = millis();
   
-  void move() {
+  void move() { //function that moves the ball
     if (!xDir) {
       xpos -= speed;
     } else {
@@ -18,24 +18,24 @@ class Ball {
       ypos += speed;
     }
     
-    ellipse(xpos, ypos, 20, 20);
+    ellipse(xpos, ypos, 20, 20); //draws the ball in
   }
   
-  void colDetect() {
-    if (((xpos <= 35) && (xpos >= 20)) && ((ypos >= p.ypos) && (ypos < p.ypos + 80))) {
+  void colDetect() { //function to check whether the ball has collided with anything
+    if (((xpos <= 35) && (xpos >= 20)) && ((ypos >= p.ypos) && (ypos < p.ypos + 80))) { //checks if the ball is touching the paddle
       xDir = true;
       points += 1;
     }
     
-    if ((ypos - 5 <= 0) || (ypos + 5 >= height)) {
+    if ((ypos - 5 <= 0) || (ypos + 5 >= height)) { //checks if the ball is touching the top or bottom
       yDir = !yDir;
     }
     
-    if (xpos >= width) {
+    if (xpos >= width) { //checks if the ball is touching the far wall
       xDir = false;
     }
     
-    if (xpos < 0) {
+    if (xpos < 0) { //checks if the ball is behind the paddle and resets the game
       points = 0;
       xpos = 350;
       ypos = 500;
@@ -45,7 +45,7 @@ class Ball {
     }
   }
   
-  void changeSpeed() {
+  void changeSpeed() { //function to increase the speed every 10 seconds to make the game harder
     if (millis() >= startMillis + 10000) {
       speed += 0.5;
       startMillis = millis();
