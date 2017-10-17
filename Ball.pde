@@ -42,6 +42,7 @@ class Ball {
       xDir = false;
       yDir = false;
       speed = 2.5;
+      p.speed = 5;
     }
   }
   

@@ -25,4 +25,5 @@ void draw() {
   b.move();
   b.colDetect();
   b.changeSpeed();
+  p.changeSpeed();
 }
