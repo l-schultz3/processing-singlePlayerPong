@@ -1,6 +1,8 @@
 Paddle p;
 Ball b;
 
+int points = 0;
+
 void setup() {
   size(1000, 700);
   noStroke();
@@ -11,6 +13,9 @@ void setup() {
 
 void draw() {
   background(0);
+  fill(255);
+  textSize(40);
+  text(str(points), 0, 32);
   
   if (keyPressed && key == CODED) {
     p.input();
@@ -19,4 +24,5 @@ void draw() {
   p.draw();
   b.move();
   b.colDetect();
+  b.changeSpeed();
 }
