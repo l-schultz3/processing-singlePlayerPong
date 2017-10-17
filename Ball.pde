@@ -1,22 +1,36 @@
 class Ball {
   float xpos = 350;
   float ypos = 500;
-  int xDir = 1; //1 = towards player, 2 = away from player
-  int yDir = 1; //1 = upwards, 2 = downwards
-  float speed = 2;
+  boolean xDir = false; //false = towards player, true = away from player
+  boolean yDir = false; //false = upwards, true = downwards
+  float speed = 2.5;
   
   void move() {
-    if (xDir == 1) {
+    if (!xDir) {
       xpos -= speed;
     } else {
       xpos += speed;
     }
-    if (yDir == 1) {
+    if (!yDir) {
       ypos -= speed;
     } else {
       ypos += speed;
     }
     
     ellipse(xpos, ypos, 20, 20);
+  }
+  
+  void colDetect() {
+    if (xpos == 35 && ((ypos >= p.ypos) && (ypos < p.ypos + 70))) {
+      xDir = true;
+    }
+    
+    if ((ypos - 5 <= 0) || (ypos + 5 >= height)) {
+      yDir = !yDir;
+    }
+    
+    if (xpos >= width) {
+      xDir = false;
+    }
   }
 }

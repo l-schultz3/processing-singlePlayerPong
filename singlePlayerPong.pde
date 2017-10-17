@@ -18,4 +18,5 @@ void draw() {
   
   p.draw();
   b.move();
+  b.colDetect();
 }
